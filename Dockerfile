@@ -3,7 +3,7 @@ WORKDIR node-app
 COPY package*.json ./
 RUN npm install
 
-Run npm install puppeteer
+RUN npm install puppeteer
 
 COPY . .
 //RUN npm run test
