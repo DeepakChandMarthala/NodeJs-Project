@@ -88,6 +88,8 @@ pipeline {
                 
             }
     }
+}
+    
 
     post {
         always {
