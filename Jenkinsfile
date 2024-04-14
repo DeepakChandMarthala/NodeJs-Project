@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         CONTAINER_NAME = "mycontainer-${BUILD_ID}"
-        REGISTRY = "deepakchandmarthala/maven-project"
+        REGISTRY = "deepakchandmarthala/nodejs-project"
         TAG = "latest"
         REGISTRY_CREDENTIAL = 'docker-login' // This should be the ID of the credentials stored in Jenkins
         // Ensure you store DOCKER_USERNAME and PASSWORD in Jenkins credentials and not here directly
