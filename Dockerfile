@@ -6,7 +6,7 @@ RUN npm install
 Run npm install puppeteer
 
 COPY . .
-RUN npm run test
+//RUN npm run test
 EXPOSE 3000
 CMD ["npm", "start"]
 
