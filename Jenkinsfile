@@ -10,8 +10,11 @@ pipeline {
         DOCKER_IMAGE = ''
         // Comment out PATH variable for clarity in this example; make sure to set it properly as needed
         // PATH = "/home/ubuntu/.nvm/versions/node/v12.22.9/bin:$PATH"
+        //tools {nodejs "nodejs"}
     }
 
+    tools {nodejs "nodejs"}
+    
     stages {
         stage("Git Checkout") {
             steps {
