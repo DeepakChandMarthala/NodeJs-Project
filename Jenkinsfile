@@ -77,6 +77,16 @@ pipeline {
                 }
             }
         }
+
+        stage("Testing")
+        {
+            steps{
+                script{
+                    echo "testing"
+                    sh "node test.js"
+                }
+                
+            }
     }
 
     post {
