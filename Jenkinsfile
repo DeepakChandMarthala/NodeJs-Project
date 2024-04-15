@@ -73,6 +73,7 @@ pipeline {
                                 ls && \
                                 pwd && \
                                 ./script.sh"
+                                npm install
                                 npm run test
                             '''
                         }
