@@ -21,6 +21,21 @@ pipeline {
                 git 'https://github.com/DeepakChandMarthala/NodeJs-Project.git'
             }
         }
+       stage("SonarQube Analysis") {
+    steps {
+        script {
+            withSonarQubeEnv('My SonarQube Server') { // Make sure this name matches your Jenkins system configuration
+                // The token is assumed to be stored in Jenkins credentials
+                withCredentials([string(credentialsId: 'SONARQUBE_TOKEN', variable: 'TOKEN')]) {
+                    sh "sonar-scanner -Dsonar.projectKey=NodeJs-Project \
+                                     -Dsonar.sources=. \
+                                     -Dsonar.host.url= "http://54.86.121.58:9000"
+                                     -Dsonar.login=$TOKEN"
+                }
+            }
+        }
+    }
+}
 
     
         stage("Build Docker Image") {
