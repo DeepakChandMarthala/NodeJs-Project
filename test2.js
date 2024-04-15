@@ -2,7 +2,7 @@ const axios = require('axios');
 const assert = require('assert');
 
 // Define the URL of your deployed Node.js application
-const url = 'http://100.25.196.208:3000';
+const url = 'http://54.158.188.40:3000';
 
 // Function to perform a simple text presence check
 async function testTextPresence() {
