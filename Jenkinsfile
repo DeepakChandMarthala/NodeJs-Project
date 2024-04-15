@@ -141,23 +141,7 @@ pipeline {
                 }
             }
         }
-    stage('Static Code Analysis') {
-    steps {
-        script {
-            env.SONAR_URL = "http://54.86.121.58:9000"  // Set SonarQube server URL
-            withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_AUTH_TOKEN')]) {
-                sh """
-                sonar-scanner \
-                -Dsonar.projectKey=NodeJs-Project \
-                -Dsonar.sources=. \
-                -Dsonar.host.url=${env.SONAR_URL} \
-                -Dsonar.login=${env.SONAR_AUTH_TOKEN}
-                """
-            }
-        }
-    }
-}
-
+    
 
         stage("Build Docker Image") {
             steps {
