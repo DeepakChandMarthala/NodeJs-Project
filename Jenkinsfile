@@ -25,13 +25,16 @@ pipeline {
         
        stage("SonarQube Analysis") {
     steps {
+        environment {
+        SONAR_URL = "http://54.86.121.58:9000"
+      }
         script {
             withSonarQubeEnv('SonarQube-Server') { // Make sure this name matches your Jenkins system configuration
                 // The token is assumed to be stored in Jenkins credentials
                 withCredentials([string(credentialsId: 'sonar-token', variable: 'TOKEN')]) {
                     sh "sonar-scanner -Dsonar.projectKey=NodeJs-Project \
                                      -Dsonar.sources=. \
-                                     -Dsonar.host.url= "http://54.86.121.58:9000"
+                                     -Dsonar.host.url= ${SONAR_URL}
                                      -Dsonar.login=$TOKEN"
                 }
             }
