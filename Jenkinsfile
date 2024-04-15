@@ -29,7 +29,7 @@ pipeline {
                 script {
                     DOCKER_IMAGE = "${REGISTRY}:${TAG}"
                     // Uncomment and adjust if npm tests are required
-                    sh "npm run test"
+                    //sh "npm run test"
                     sh "docker build -t ${DOCKER_IMAGE} ."
                 }
             }
@@ -73,6 +73,7 @@ pipeline {
                                 ls && \
                                 pwd && \
                                 ./script.sh"
+                                npm run test
                             '''
                         }
                     }
