@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
           <li>Bhavani</li>
           <li>Shravya</li>
           <li>Vakula</li>
-          <li>Deepak c0904124</li>
+          <li>Deepak</li>
         </ul>
       </div>
     </body>
