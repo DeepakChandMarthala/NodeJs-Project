@@ -127,7 +127,7 @@ pipeline {
                 withSonarQubeEnv('Sonarqube-Server') {
                     withCredentials([string(credentialsId: 'sonar-new', variable: 'TOKEN')]) {
                         sh '''
-                        sonar-scanner \
+                        sonar-new \
                         -Dsonar.projectKey=NodeJs-Project \
                         -Dsonar.sources=. \
                         -Dsonar.host.url=http://52.90.116.100:9000 \
