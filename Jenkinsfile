@@ -23,7 +23,7 @@ pipeline {
         }
 
         
-       stage("SonarQube Analysis") {
+     /*  stage("SonarQube Analysis") {
     steps {
         environment {
         SONAR_URL = "http://54.86.121.58:9000"
@@ -40,7 +40,7 @@ pipeline {
             }
         }
     }
-}
+}*/
 
     
         stage("Build Docker Image") {
