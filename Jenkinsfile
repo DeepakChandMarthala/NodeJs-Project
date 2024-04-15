@@ -5,11 +5,8 @@ pipeline {
         CONTAINER_NAME = "mycontainer-${BUILD_ID}"
         REGISTRY = "deepakchandmarthala/nodejs-project"
         TAG = "latest"
-        REGISTRY_CREDENTIAL = 'docker-login' // This should be the ID of the credentials stored in Jenkins
-        // Ensure you store DOCKER_USERNAME and PASSWORD in Jenkins credentials and not here directly
+        REGISTRY_CREDENTIAL = 'docker-login' 
         DOCKER_IMAGE = ''
-        // Comment out PATH variable for clarity in this example; make sure to set it properly as needed
-        // PATH = "/home/ubuntu/.nvm/versions/node/v12.22.9/bin:$PATH"
         
     }
 
@@ -27,8 +24,6 @@ pipeline {
                 echo "Building Docker Image.."
                 script {
                     DOCKER_IMAGE = "${REGISTRY}:${TAG}"
-                    // Uncomment and adjust if npm tests are required
-                    //sh "npm run test"
                     sh "docker build -t ${DOCKER_IMAGE} ."
                 }
             }
