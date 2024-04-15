@@ -1,10 +1,8 @@
 const axios = require('axios');
 const assert = require('assert');
 
-// Define the URL of your deployed Node.js application
 const url = 'http://54.158.188.40:3000';
 
-// Function to perform a simple text presence check
 async function testTextPresence() {
     try {
         const response = await axios.get(url);
@@ -19,7 +17,6 @@ async function testTextPresence() {
     }
 }
 
-// Execute the test function
 testTextPresence();
 
 
