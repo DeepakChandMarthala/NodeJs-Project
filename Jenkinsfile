@@ -1,4 +1,4 @@
-/*pipeline {
+pipeline {
     agent any
 
     environment {
@@ -100,9 +100,9 @@
             sh "docker system prune -a -f"
         }
     }
-}*/
+}
 
-pipeline {
+/*pipeline {
     agent any
 
     environment {
@@ -138,7 +138,7 @@ pipeline {
             }
         }
 
-       /* stage("Build Docker Image") {
+       stage("Build Docker Image") {
             steps {
                 echo "Building Docker Image.."
                 script {
