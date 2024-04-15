@@ -110,7 +110,8 @@ pipeline {
         REGISTRY = "deepakchandmarthala/nodejs-project"
         TAG = "latest"
         REGISTRY_CREDENTIAL = 'docker-login' // ID of the credentials stored in Jenkins
-        DOCKER_IMAGE = ''
+        DOCKER_IMAGE = "${REGISTRY}:${TAG}"
+        SONAR_URL = "http://52.90.116.100:9000"
     }
 
     stages {
@@ -121,34 +122,27 @@ pipeline {
             }
         }
 
-       stage("SonarQube Analysis") {
+        stage("SonarQube Analysis") {
             steps {
-                environment {
-                    SONAR_URL = "http://52.90.116.100:9000"
-                }
-                script {
-                    withSonarQubeEnv('SonarQube-Server') { // Matches Jenkins system configuration
-                        withCredentials([string(credentialsId: 'sonarqube', variable: 'TOKEN')]) {
-                            sh '''
-                            sonar-scanner \
-                            -Dsonar.projectKey=NodeJs-Project \
-                            -Dsonar.sources=. \
-                            -Dsonar.host.url=${SONAR_URL} \
-                            -Dsonar.login=$TOKEN
-                            '''
-                        }
+                withSonarQubeEnv('SonarQube-Server') {
+                    withCredentials([string(credentialsId: 'sonarqube', variable: 'TOKEN')]) {
+                        sh '''
+                        sonar-scanner \
+                        -Dsonar.projectKey=NodeJs-Project \
+                        -Dsonar.sources=. \
+                        -Dsonar.host.url=$SONAR_URL \
+                        -Dsonar.login=$TOKEN
+                        '''
                     }
                 }
             }
         }
-    
 
         stage("Build Docker Image") {
             steps {
                 echo "Building Docker Image.."
                 script {
-                    DOCKER_IMAGE = "${REGISTRY}:${TAG}"
-                    sh "docker build -t ${DOCKER_IMAGE} ."
+                    sh "docker build -t $DOCKER_IMAGE ."
                 }
             }
         }
@@ -158,7 +152,7 @@ pipeline {
                 echo "Logging in to Docker Registry.."
                 script {
                     withCredentials([usernamePassword(credentialsId: REGISTRY_CREDENTIAL, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                        sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin"
+                        sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
                     }
                 }
             }
@@ -167,7 +161,7 @@ pipeline {
         stage("Push Docker Image to Registry") {
             steps {
                 echo "Pushing Docker Image to Registry.."
-                sh "docker push ${DOCKER_IMAGE}"
+                sh "docker push $DOCKER_IMAGE"
             }
         }
 
@@ -209,4 +203,6 @@ pipeline {
             sh "docker system prune -a -f"
         }
     }
+}
+
 }
