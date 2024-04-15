@@ -1,4 +1,4 @@
-/*pipeline {
+pipeline {
     agent any
 
     environment {
@@ -100,9 +100,9 @@
             sh "docker system prune -a -f"
         }
     }
-}*/
+}
 
-pipeline {
+/*pipeline {
     agent any
 
     environment {
@@ -121,7 +121,7 @@ pipeline {
             }
         }
 
-       /* stage("SonarQube Analysis") {
+       stage("SonarQube Analysis") {
             steps {
                 environment {
                     SONAR_URL = "http://54.86.121.58:9000"
@@ -140,7 +140,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
     stage('Static Code Analysis') {
     steps {
         script {
@@ -225,6 +225,4 @@ pipeline {
             sh "docker system prune -a -f"
         }
     }
-}
-
-
+}*/
