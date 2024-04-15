@@ -1,4 +1,4 @@
-pipeline {
+/*pipeline {
     agent any
 
     environment {
@@ -100,9 +100,9 @@ pipeline {
             sh "docker system prune -a -f"
         }
     }
-}
+}*/
 
-/*pipeline {
+pipeline {
     agent any
 
     environment {
@@ -124,11 +124,11 @@ pipeline {
        stage("SonarQube Analysis") {
             steps {
                 environment {
-                    SONAR_URL = "http://54.86.121.58:9000"
+                    SONAR_URL = "http://52.90.116.100:9000"
                 }
                 script {
                     withSonarQubeEnv('SonarQube-Server') { // Matches Jenkins system configuration
-                        withCredentials([string(credentialsId: 'sonar-token', variable: 'TOKEN')]) {
+                        withCredentials([string(credentialsId: 'sonarqube', variable: 'TOKEN')]) {
                             sh '''
                             sonar-scanner \
                             -Dsonar.projectKey=NodeJs-Project \
@@ -209,4 +209,4 @@ pipeline {
             sh "docker system prune -a -f"
         }
     }
-}*/
+}
