@@ -59,7 +59,7 @@ pipeline {
             steps {
                 script {
                     sshagent(credentials: ['Deploy-Server']) {
-                        withCredentials([usernamePassword(credentialsId: 'Docker-Token', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')])
+                        withCredentials([usernamePassword(credentialsId: REGISTRY_CREDENTIAL, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')])
                          {
                             sh '''
                                 ssh -v -o StrictHostKeyChecking=no -l ubuntu 35.174.200.209 \
