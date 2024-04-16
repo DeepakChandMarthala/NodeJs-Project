@@ -68,7 +68,7 @@ pipeline {
                                 echo logged into the node-server && \
                                 ls && \
                                 pwd && \
-                                ./script.sh"  
+                                sudo ./script.sh"  
                             '''
                          }
                     }
