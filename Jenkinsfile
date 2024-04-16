@@ -61,15 +61,15 @@ pipeline {
                     sshagent(credentials: ['Deploy-Server']) {
                         withCredentials([usernamePassword(credentialsId: 'Docker-Token', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')])
                          {
-                        //     sh '''
-                        //         ssh -v -o StrictHostKeyChecking=no -l ubuntu 35.174.200.209 \
-                        //         "uname -a && \
-                        //         whoami && \
-                        //         echo logged into the node-server && \
-                        //         ls && \
-                        //         pwd && \
-                        //         ./script.sh"  
-                        //     '''
+                            sh '''
+                                ssh -v -o StrictHostKeyChecking=no -l ubuntu 35.174.200.209 \
+                                "uname -a && \
+                                whoami && \
+                                echo logged into the node-server && \
+                                ls && \
+                                pwd && \
+                                ./script.sh"  
+                            '''
                          }
                     }
                 }
