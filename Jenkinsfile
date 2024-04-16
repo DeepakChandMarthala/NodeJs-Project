@@ -60,7 +60,7 @@ pipeline {
                     sshagent(credentials: ['Deploy-Server']) {
                         withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                             sh '''
-                                ssh -v -o StrictHostKeyChecking=no -l ubuntu 54.158.188.40 \
+                                ssh -v -o StrictHostKeyChecking=no -l ubuntu 35.174.200.209 \
                                 "uname -a && \
                                 whoami && \
                                 echo logged into the node-server && \
