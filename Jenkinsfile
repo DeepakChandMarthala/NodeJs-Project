@@ -119,8 +119,8 @@ pipeline {
 
         stage("SonarQube Analysis") {
             steps {
-                withSonarQubeEnv('Sonarqube-Server') {
-                    withCredentials([string(credentialsId: 'sonar-new', variable: 'TOKEN')]) {
+                withSonarQubeEnv('sonar-server') {
+                    withCredentials([string(credentialsId: 'jenkins', variable: 'TOKEN')]) {
                         sh '''
                         sonar-scanner \
                         -Dsonar.projectKey=NodeJsProject \
