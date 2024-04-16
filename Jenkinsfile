@@ -120,15 +120,9 @@ pipeline {
         stage("SonarQube Analysis") {
             steps {
                 withSonarQubeEnv('sonar-server') {
-                    withCredentials([string(credentialsId: 'jenkins', variable: 'TOKEN')]) {
-                        sh '''
-                        sonar-scanner \
-                        -Dsonar.projectKey=NodeJsProject \
-                        -Dsonar.sources=. \
-                        -Dsonar.host.url=http://52.90.144.29:9000 \
-                        -Dsonar.login=sqp_a01a079e61a762c343c9ee5107b5096342d1ca9d
-                        '''
-                    }
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Amazon \
+                    -Dsonar.projectKey=Amazon '''
+                }
                 }
             }
         }
