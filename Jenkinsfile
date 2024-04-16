@@ -9,7 +9,11 @@ pipeline {
         DOCKER_IMAGE = ''
         PATH = "${env.PATH}:/usr/bin"
     }
-
+    
+    options {
+        // Add cleanup options here
+        buildDiscarder(logRotator(numToKeepStr: '20'))  // Keeps the last 5 builds, adjust as necessary
+    }
     
     stages {
         stage("Git Checkout") {
