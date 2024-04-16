@@ -84,7 +84,7 @@ pipeline {
         //           sh "node test2.js"
         //         }
         //     }
-    }
+        //  }
 
      }
     
