@@ -120,7 +120,7 @@ pipeline {
         stage("SonarQube Analysis") {
             steps {
                 withSonarQubeEnv('sonar-server') {
-                    sh ''' /usr/local/bin/sonar-scanner -Dsonar.projectName=NodeJsProject \
+                    sh ''' /usr/local/bin/sonar-scanner/bin/sonar-scanner -Dsonar.projectName=NodeJsProject \
                     -Dsonar.projectKey=NodeJsProject '''
                 }
                 }
