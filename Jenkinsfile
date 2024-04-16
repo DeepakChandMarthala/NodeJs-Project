@@ -7,7 +7,7 @@ pipeline {
         TAG = "latest"
         REGISTRY_CREDENTIAL = 'Docker-Token' 
         DOCKER_IMAGE = ''
-        
+        PATH = "${env.PATH}:/usr/bin/npm"
     }
 
     
