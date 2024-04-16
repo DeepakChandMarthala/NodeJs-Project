@@ -62,7 +62,7 @@ pipeline {
                         withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')])
                          {
                             sh '''
-                                ssh -v -o StrictHostKeyChecking=no -l ubuntu 34.204.61.221\
+                                ssh -v -o StrictHostKeyChecking=no -l 100.25.166.71\
                                 "uname -a && \
                                 whoami && \
                                 echo logged into the node-server && \
