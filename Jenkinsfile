@@ -62,7 +62,7 @@ pipeline {
                         withCredentials([usernamePassword(credentialsId: REGISTRY_CREDENTIAL, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')])
                          {
                             sh '''
-                                ssh -v -o StrictHostKeyChecking=no -l ubuntu 35.174.200.209 \
+                                ssh -v -o StrictHostKeyChecking=no -l ubuntu 34.204.61.221\
                                 "uname -a && \
                                 whoami && \
                                 echo logged into the node-server && \
