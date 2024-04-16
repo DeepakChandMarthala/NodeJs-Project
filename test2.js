@@ -1,7 +1,7 @@
 const axios = require('axios');
 const assert = require('assert');
 
-const url = 'http://18.210.16.64:3000';
+const url = 'http://100.25.144.76:3000';
 
 async function testTextPresence() {
     try {
