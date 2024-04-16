@@ -80,8 +80,8 @@ pipeline {
             steps{
                 script{
                     echo "testing"
-                    sh 'npm install axios assert'
-                    sh "node test2.js"
+                    sh 'sudo npm install axios assert'
+                    sh "sudo node test2.js"
                 }
             }
          }
