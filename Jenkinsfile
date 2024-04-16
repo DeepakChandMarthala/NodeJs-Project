@@ -121,7 +121,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonar-server') {
                     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=NodeJsProject \
-                    -Dsonar.projectKey=Amazon '''
+                    -Dsonar.projectKey=NodeJsProject '''
                 }
                 }
             }
