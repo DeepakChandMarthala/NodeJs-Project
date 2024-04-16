@@ -50,52 +50,53 @@ pipeline {
                 sh "docker push ${DOCKER_IMAGE}"
             }
         }
-    
+    }
+}
 
         
 
-        stage("Deploy in EC2") {
-            steps {
-                script {
-                    sshagent(credentials: ['Deploy-Server']) {
-                        withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                            sh '''
-                                ssh -v -o StrictHostKeyChecking=no -l ubuntu 35.174.200.209 \
-                                "uname -a && \
-                                whoami && \
-                                echo logged into the node-server && \
-                                ls && \
-                                pwd && \
-                                ./script.sh"  
-                            '''
-                        }
-                    }
-                }
-            }
-        }
-        stage("Testing")
-        {
-            steps{
-                script{
-                    echo "testing"
-                    sh 'npm install axios assert'
-                  sh "node test2.js"
-                }
-            }
-    }
+//         stage("Deploy in EC2") {
+//             steps {
+//                 script {
+//                     sshagent(credentials: ['Deploy-Server']) {
+//                         withCredentials([usernamePassword(credentialsId: 'Docker-Token', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+//                             sh '''
+//                                 ssh -v -o StrictHostKeyChecking=no -l ubuntu 35.174.200.209 \
+//                                 "uname -a && \
+//                                 whoami && \
+//                                 echo logged into the node-server && \
+//                                 ls && \
+//                                 pwd && \
+//                                 ./script.sh"  
+//                             '''
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//         stage("Testing")
+//         {
+//             steps{
+//                 script{
+//                     echo "testing"
+//                     sh 'npm install axios assert'
+//                   sh "node test2.js"
+//                 }
+//             }
+//     }
 
-    }
+//     }
     
 
-    post {
-        always {
-            echo "Cleaning up..."
-            sh "docker logout"
-            // Optional: Uncomment the next line to prune Docker artifacts after build
-            sh "docker system prune -a -f"
-        }
-    }
-}
+//     post {
+//         always {
+//             echo "Cleaning up..."
+//             sh "docker logout"
+//             // Optional: Uncomment the next line to prune Docker artifacts after build
+//             sh "docker system prune -a -f"
+//         }
+//     }
+// }
 
 /*pipeline {
     agent any
