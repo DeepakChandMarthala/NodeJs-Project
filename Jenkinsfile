@@ -5,7 +5,7 @@ pipeline {
         CONTAINER_NAME = "mycontainer-${BUILD_ID}"
         REGISTRY = "deepakchandmarthala/nodejs-project"
         TAG = "latest"
-        REGISTRY_CREDENTIAL = 'docker-login' 
+        REGISTRY_CREDENTIAL = 'Docker-Token' 
         DOCKER_IMAGE = ''
         
     }
