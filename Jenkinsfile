@@ -80,8 +80,10 @@ pipeline {
             steps{
                 script{
                     echo "testing"
-                    sh 'npm install axios assert'
-                    sh "node test2.js"
+                    //sh 'npm install axios assert'
+                    //sh "node test2.js"
+                    sh 'docker run --rm -v $PWD:/app -w /app node:14 npm install axios assert'
+                    sh 'docker run --rm -v $PWD:/app -w /app node:14 node test2.js'
                 }
             }
          }
